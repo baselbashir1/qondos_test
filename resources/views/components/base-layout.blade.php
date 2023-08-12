@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>Blog Create | CORK - Multipurpose Bootstrap Dashboard Template </title>
+    <title>{{ $pageTitle }}</title>
     <link rel="icon" type="image/x-icon" href="../src/assets/img/favicon.ico" />
     @vite(['resources/rtl/layouts/collapsible-menu/css/light/loader.css'])
     @vite(['resources/rtl/layouts/collapsible-menu/css/dark/loader.css'])
@@ -1404,7 +1404,9 @@
 
         <!--  BEGIN CONTENT AREA  -->
         <div id="content" class="main-content">
-            {{ $slot }}
+            <div class="container">
+                {{ $slot }}
+            </div>
 
             <!--  BEGIN FOOTER  -->
             <div class="footer-wrapper">
