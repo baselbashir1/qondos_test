@@ -3,8 +3,9 @@
     <x-slot:pageTitle>تعديل العميل</x-slot>
 
         <div class="row mb-4 layout-spacing layout-top-spacing">
-            <form method="POST" action="/edit-client/{{ $client->id }}">
+            <form method="POST" action="{{ route('clients.update', ['client' => $client->id]) }}">
                 @csrf
+                @method('PUT')
                 <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                     <div class="widget-content widget-content-area ecommerce-create-section">
                         <div class="row mb-4">

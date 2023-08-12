@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClientRequest;
+use Illuminate\Support\Facades\Session;
 
 class ClientController extends Controller
 {
@@ -28,10 +29,12 @@ class ClientController extends Controller
             'email' => isset($formFields['email']) ? $formFields['email'] : null,
             'phone' => $formFields['phone'],
             'city' => $formFields['city'],
-            'password' => $formFields['password']
+            'password' => bcrypt($formFields['password'])
         ]);
 
-        return redirect('/clients');
+        notify()->success('Welcome to Laravel Notify ⚡️');
+        // Session::flash('toast_success', 'Client added successfully!');
+        return redirect()->route('clients.index');
     }
 
     public function edit(Client $client)
@@ -48,15 +51,15 @@ class ClientController extends Controller
             'email' => isset($formFields['email']) ? $formFields['email'] : null,
             'phone' => $formFields['phone'],
             'city' => $formFields['city'],
-            'password' => $formFields['password']
+            'password' => bcrypt($formFields['password'])
         ]);
 
-        return redirect('/clients');
+        return redirect()->route('clients.index');
     }
 
     public function destroy(Client $client)
     {
         $client->delete();
-        return redirect('/clients');
+        return redirect()->route('clients.index');
     }
 }

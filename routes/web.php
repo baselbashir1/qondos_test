@@ -17,25 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth')->group(function () {
-    Route::controller(ClientController::class)->group(function () {
-        Route::get('/clients', 'index');
-        Route::get('/client/{client}/details', 'show');
-        Route::get('/client/add', 'create');
-        Route::post('/add-client', 'store');
-        Route::get('/client/{client}/edit', 'edit');
-        Route::post('/edit-client/{client}', 'update');
-        Route::post('/delete-client/{client}', 'destroy');
-    });
-
-    Route::controller(MaintenanceTechnicianController::class)->group(function () {
-        Route::get('/maintenance-technicians', 'index');
-        Route::get('/maintenance-technician/{maintenance-technician}/details', 'show');
-        Route::get('/maintenance-technician/add', 'create');
-        Route::post('/add-maintenance-technician', 'store');
-        Route::get('/maintenance-technician/{maintenanceTechnician}/edit', 'edit');
-        Route::post('/edit-maintenance-technician/{maintenanceTechnician}', 'update');
-        Route::post('/delete-maintenance-technician/{maintenanceTechnician}', 'destroy');
-    });
+    Route::get('/', [ClientController::class, 'index']);
+    Route::resource('clients', ClientController::class);
+    Route::resource('maintenance-technicians', MaintenanceTechnicianController::class);
 });
 
 require __DIR__ . '/auth.php';

@@ -28,10 +28,10 @@ class MaintenanceTechnicianController extends Controller
             'email' => isset($formFields['email']) ? $formFields['email'] : null,
             'phone' => $formFields['phone'],
             'city' => $formFields['city'],
-            'password' => $formFields['password']
+            'password' => bcrypt($formFields['password'])
         ]);
 
-        return redirect('/maintenance-technicians');
+        return redirect()->route('maintenance-technicians.index');
     }
 
     public function edit(MaintenanceTechnician $maintenanceTechnician)
@@ -48,15 +48,15 @@ class MaintenanceTechnicianController extends Controller
             'email' => isset($formFields['email']) ? $formFields['email'] : null,
             'phone' => $formFields['phone'],
             'city' => $formFields['city'],
-            'password' => $formFields['password']
+            'password' => bcrypt($formFields['password'])
         ]);
 
-        return redirect('/maintenance-technicians');
+        return redirect()->route('maintenance-technicians.index');
     }
 
     public function destroy(MaintenanceTechnician $maintenanceTechnician)
     {
         $maintenanceTechnician->delete();
-        return redirect('/maintenance-technicians');
+        return redirect()->route('maintenance-technicians.index');
     }
 }

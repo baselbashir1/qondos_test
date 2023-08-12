@@ -4,7 +4,7 @@
 
         <div class="row layout-top-spacing">
             <div class="col-xl-12 col-lg-6">
-                <a href="/maintenance-technician/add" class="btn btn-primary w-100 btn-lg mb-4">
+                <a href="{{ route('maintenance-technicians.create') }}" class="btn btn-primary w-100 btn-lg mb-4">
                     <span class="btn-text-inner">إضافة فني صيانة</span>
                 </a>
             </div>
@@ -51,11 +51,12 @@
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
                                                     <a class="dropdown-item"
-                                                        href="/maintenance-technician/{{ $maintenanceTechnician->id }}/edit">تعديل</a>
+                                                        href="{{ route('maintenance-technicians.edit', ['maintenance_technician' => $maintenanceTechnician->id]) }}">تعديل</a>
                                                     <form
-                                                        action="/delete-maintenance-technician/{{ $maintenanceTechnician->id }}"
+                                                        action="{{ route('maintenance-technicians.destroy', ['maintenance_technician' => $maintenanceTechnician->id]) }}"
                                                         method="POST">
                                                         @csrf
+                                                        @method('DELETE')
                                                         <button class="dropdown-item" type="submit"
                                                             style="font-size: 13px">حذف</button>
                                                     </form>

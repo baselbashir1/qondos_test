@@ -4,7 +4,7 @@
 
         <div class="row layout-top-spacing">
             <div class="col-xl-12 col-lg-6">
-                <a href="/client/add" class="btn btn-primary w-100 btn-lg mb-4">
+                <a href="{{ route('clients.create') }}" class="btn btn-primary w-100 btn-lg mb-4">
                     <span class="btn-text-inner">إضافة عميل</span>
                 </a>
             </div>
@@ -51,9 +51,12 @@
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
                                                     <a class="dropdown-item"
-                                                        href="/client/{{ $client->id }}/edit">تعديل</a>
-                                                    <form action="/delete-client/{{ $client->id }}" method="POST">
+                                                        href="{{ route('clients.edit', ['client' => $client->id]) }}">تعديل</a>
+                                                    <form
+                                                        action="{{ route('clients.destroy', ['client' => $client->id]) }}"
+                                                        method="POST">
                                                         @csrf
+                                                        @method('DELETE')
                                                         <button class="dropdown-item" type="submit"
                                                             style="font-size: 13px">حذف</button>
                                                     </form>
