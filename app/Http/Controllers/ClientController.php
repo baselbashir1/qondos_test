@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClientRequest;
+use Exception;
 use Illuminate\Support\Facades\Session;
 
 class ClientController extends Controller
@@ -24,16 +25,20 @@ class ClientController extends Controller
     {
         $formFields = $request->validated();
 
-        Client::create([
-            'name' => $formFields['name'],
-            'email' => isset($formFields['email']) ? $formFields['email'] : null,
-            'phone' => $formFields['phone'],
-            'city' => $formFields['city'],
-            'password' => bcrypt($formFields['password'])
-        ]);
+        try {
+            Client::create([
+                'name' => $formFields['name'],
+                'email' => isset($formFields['email']) ? $formFields['email'] : null,
+                'phone' => $formFields['phone'],
+                'city' => $formFields['city'],
+                'password' => bcrypt($formFields['password'])
+            ]);
 
-        notify()->success('تمت إضافة العميل بنجاح');
-        return redirect()->route('clients.index');
+            notify()->success('تمت إضافة العميل بنجاح');
+            return redirect()->route('clients.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'حدث خطأ أثناء إضافة العميل']);
+        }
     }
 
     public function edit(Client $client)
@@ -45,16 +50,20 @@ class ClientController extends Controller
     {
         $formFields = $request->validated();
 
-        $client->update([
-            'name' => $formFields['name'],
-            'email' => isset($formFields['email']) ? $formFields['email'] : null,
-            'phone' => $formFields['phone'],
-            'city' => $formFields['city'],
-            'password' => bcrypt($formFields['password'])
-        ]);
+        try {
+            $client->update([
+                'name' => $formFields['name'],
+                'email' => isset($formFields['email']) ? $formFields['email'] : null,
+                'phone' => $formFields['phone'],
+                'city' => $formFields['city'],
+                'password' => bcrypt($formFields['password'])
+            ]);
 
-        notify()->success('تم تعديل العميل بنجاح');
-        return redirect()->route('clients.index');
+            notify()->success('تم تعديل العميل بنجاح');
+            return redirect()->route('clients.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'حدث خطأ أثناء تعديل العميل']);
+        }
     }
 
     public function destroy(Client $client)

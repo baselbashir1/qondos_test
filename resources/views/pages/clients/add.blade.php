@@ -2,6 +2,18 @@
 
     <x-slot:pageTitle>إضافة عميل</x-slot>
 
+        <div class="mt-4">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        </div>
+
         <div class="row mb-4 layout-spacing layout-top-spacing">
             <form method="POST" action="{{ route('clients.store') }}">
                 @csrf
@@ -13,6 +25,7 @@
                                 <input type="text" name="name" class="form-control">
                             </div>
                             @error('name')
+                                {{-- {{ htmlspecialchars(notify()->error('saas')) }} --}}
                                 <p class="mt-2">{{ $message }}</p>
                             @enderror
                         </div>

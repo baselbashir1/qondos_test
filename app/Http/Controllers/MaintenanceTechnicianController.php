@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\MaintenanceTechnician;
 use App\Http\Requests\MaintenanceTechnicianRequest;
+use Exception;
 
 class MaintenanceTechnicianController extends Controller
 {
@@ -23,16 +24,20 @@ class MaintenanceTechnicianController extends Controller
     {
         $formFields = $request->validated();
 
-        MaintenanceTechnician::create([
-            'name' => $formFields['name'],
-            'email' => isset($formFields['email']) ? $formFields['email'] : null,
-            'phone' => $formFields['phone'],
-            'city' => $formFields['city'],
-            'password' => bcrypt($formFields['password'])
-        ]);
+        try {
+            MaintenanceTechnician::create([
+                'name' => $formFields['name'],
+                'email' => isset($formFields['email']) ? $formFields['email'] : null,
+                'phone' => $formFields['phone'],
+                'city' => $formFields['city'],
+                'password' => bcrypt($formFields['password'])
+            ]);
 
-        notify()->success('تمت إضافة فني صيانة بنجاح');
-        return redirect()->route('maintenance-technicians.index');
+            notify()->success('تمت إضافة فني صيانة بنجاح');
+            return redirect()->route('maintenance-technicians.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'حدث خطأ أثناء إضافة فني صيانة']);
+        }
     }
 
     public function edit(MaintenanceTechnician $maintenanceTechnician)
@@ -44,16 +49,20 @@ class MaintenanceTechnicianController extends Controller
     {
         $formFields = $request->validated();
 
-        $maintenanceTechnician->update([
-            'name' => $formFields['name'],
-            'email' => isset($formFields['email']) ? $formFields['email'] : null,
-            'phone' => $formFields['phone'],
-            'city' => $formFields['city'],
-            'password' => bcrypt($formFields['password'])
-        ]);
+        try {
+            $maintenanceTechnician->update([
+                'name' => $formFields['name'],
+                'email' => isset($formFields['email']) ? $formFields['email'] : null,
+                'phone' => $formFields['phone'],
+                'city' => $formFields['city'],
+                'password' => bcrypt($formFields['password'])
+            ]);
 
-        notify()->success('تم تعديل فني الصيانة بنجاح');
-        return redirect()->route('maintenance-technicians.index');
+            notify()->success('تم تعديل فني الصيانة بنجاح');
+            return redirect()->route('maintenance-technicians.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'حدث خطأ أثناء تعديل فني الصيانة']);
+        }
     }
 
     public function destroy(MaintenanceTechnician $maintenanceTechnician)
