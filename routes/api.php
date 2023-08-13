@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\ClientController;
+use App\Http\Controllers\API\MaintenanceTechnicianController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,6 @@ Route::post('/client/login', [ClientController::class, 'login']);
 Route::get('/client/profile', [ClientController::class, 'getProfile'])->middleware(['auth:api-client', 'scopes:client']);
 Route::get('/client/logout', [ClientController::class, 'logout'])->middleware(['auth:api-client', 'scopes:client']);
 
-// Route::post('/technical/login', [TechnicalController::class, 'login']);
-// Route::get('/technical/profile', [TechnicalController::class, 'getProfile'])->middleware(['auth:api-technical', 'scopes:technical']);
-// Route::get('/technical/logout', [TechnicalController::class, 'logout'])->middleware(['auth:api-technical', 'scopes:technical']);
+Route::post('/maintenance-technician/login', [MaintenanceTechnicianController::class, 'login']);
+Route::get('/maintenance-technician/profile', [MaintenanceTechnicianController::class, 'getProfile'])->middleware(['auth:api-maintenance-technician', 'scopes:maintenance-technician']);
+Route::get('/maintenance-technician/logout', [MaintenanceTechnicianController::class, 'logout'])->middleware(['auth:api-maintenance-technician', 'scopes:maintenance-technician']);

@@ -26,13 +26,12 @@ class MaintenanceTechnicianController extends Controller
         if (Auth::guard('maintenance-technician')->attempt(['email' => $input['email'], 'password' => $input['password']])) {
             $maintenanceTechnician = Auth::guard('maintenance-technician')->user();
 
-            $token = $maintenanceTechnician->createToken('mt token', ['maintenance-technician'])->accessToken;
+            $token = $maintenanceTechnician->createToken('maintenance-technician token', ['maintenance-technician'])->accessToken;
 
             return response()->json(['maintenanceTechnician' => $maintenanceTechnician, 'token' => $token]);
+        } else {
+            return response()->json(['error' => 'Invalid Credentials']);
         }
-        // else {
-        //     return response()->json(['error' => 'Invalid Credentials']);
-        // }
     }
 
     public function getProfile()

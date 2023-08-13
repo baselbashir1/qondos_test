@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', [ClientController::class, 'index']);
+    Route::get('/', function () {
+        return view('index');
+    });
     Route::resource('clients', ClientController::class);
     Route::resource('maintenance-technicians', MaintenanceTechnicianController::class);
 });

@@ -29,10 +29,9 @@ class ClientController extends Controller
             $token = $client->createToken('client token', ['client'])->accessToken;
 
             return response()->json(['client' => $client, 'token' => $token]);
+        } else {
+            return response()->json(['error' => 'Invalid Credentials']);
         }
-        // else {
-        //     return response()->json(['error' => 'Invalid Credentials']);
-        // }P
     }
 
     public function getProfile()

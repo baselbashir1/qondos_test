@@ -1,112 +1,40 @@
 <x-base-layout>
 
-    <x-slot:pageTitle>shop</x-slot>
+    <x-slot:pageTitle>لوحة التحكم</x-slot>
 
-        <div class="layout-px-spacing">
-            <div class="middle-content container-xxl p-0">
+        <div class="container text-center" style="margin-top: 50px; margin-bottom: 50px">
+            <h3 style="font-size: 30px">لوحة التحكم</h3>
+        </div>
 
-                <!-- BREADCRUMB -->
-                <div class="page-meta">
-                    <nav class="breadcrumb-style-one" aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">App</a></li>
-                            <li class="breadcrumb-item"><a href="#">Blog</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Create</li>
-                        </ol>
-                    </nav>
-                </div>
-                <!-- /BREADCRUMB -->
-
-                <div class="row mb-4 layout-spacing layout-top-spacing">
-
-                    <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12">
-
-                        <div class="widget-content widget-content-area blog-create-section">
-
-                            <div class="row mb-4">
-                                <div class="col-sm-12">
-                                    <input type="text" class="form-control" id="post-title" placeholder="Post Title">
-                                </div>
-                            </div>
-
-                            <div class="row mb-4">
-                                <div class="col-sm-12">
-                                    <label>Content</label>
-                                    <div id="blog-description"></div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="widget-content widget-content-area blog-create-section mt-4">
-
-                            <h5 class="mb-4">SEO Settings</h5>
-
-                            <div class="row mb-4">
-                                <div class="col-xxl-12 mb-4">
-                                    <input type="text" class="form-control" id="post-meta-title"
-                                        placeholder="Meta Title">
-                                </div>
-                                <div class="col-xxl-12">
-                                    <label for="post-meta-description">Meta Description</label>
-                                    <textarea name="post-meta-description" class="form-control" id="post-meta-description" cols="10" rows="5"></textarea>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-xxl-3 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-xxl-0 mt-4">
-                        <div class="widget-content widget-content-area blog-create-section">
-                            <div class="row">
-                                <div class="col-xxl-12 mb-4">
-                                    <div class="switch form-switch-custom switch-inline form-switch-primary">
-                                        <input class="switch-input" type="checkbox" role="switch" id="showPublicly"
-                                            checked>
-                                        <label class="switch-label" for="showPublicly">Publish</label>
-                                    </div>
-                                </div>
-                                <div class="col-xxl-12 mb-4">
-                                    <div class="switch form-switch-custom switch-inline form-switch-primary">
-                                        <input class="switch-input" type="checkbox" role="switch" id="enableComment"
-                                            checked>
-                                        <label class="switch-label" for="enableComment">Enable Comments</label>
-                                    </div>
-                                </div>
-                                <div class="col-xxl-12 col-md-12 mb-4">
-                                    <label for="tags">Tags</label>
-                                    <input id="tags" class="blog-tags" value="">
-                                </div>
-
-                                <div class="col-xxl-12 col-md-12 mb-4">
-                                    <label for="category">Category</label>
-                                    <input id="category" name="category" placeholder="Choose...">
-                                </div>
-
-                                <div class="col-xxl-12 col-md-12 mb-4">
-
-                                    <label for="product-images">Featured Image</label>
-                                    <div class="multiple-file-upload">
-                                        <input type="file" class="filepond file-upload-multiple" name="filepond"
-                                            id="product-images" multiple data-allow-reorder="true"
-                                            data-max-file-size="3MB" data-max-files="5">
-                                    </div>
-
-                                </div>
-
-                                <div class="col-xxl-12 col-sm-4 col-12 mx-auto">
-                                    <button class="btn btn-success w-100">Create Post</button>
-                                </div>
-
+        <div class="row">
+            <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4">
+                <a class="card style-6" href="{{ route('clients.index') }}">
+                    <img src="{{ Vite::asset('resources/src/assets/img/clients.png') }}" class="card-img-top"
+                        alt="..." style="width: 100%; height: 150px">
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="container">
+                                <i style="font-size: 20px" class="fas fa-shopping-bag"></i>
+                                <b>العملاء</b>
                             </div>
                         </div>
                     </div>
-
-                </div>
-
+                </a>
             </div>
-
+            <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4">
+                <a class="card style-6" href="{{ route('maintenance-technicians.index') }}">
+                    <img src="{{ Vite::asset('resources/src/assets/img/maintenance-technician.jpeg') }}"
+                        class="card-img-top" alt="..." style="width: 100%; height: 150px">
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="container">
+                                <i style="font-size: 20px" class="fas fa-clipboard-list"></i>
+                                <b>فنيو الصيانة</b>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
 
 </x-base-layout>
