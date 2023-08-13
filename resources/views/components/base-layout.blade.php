@@ -35,6 +35,8 @@
     @vite(['resources/rtl/src/assets/css/light/apps/blog-create.css'])
     @vite(['resources/rtl/src/assets/css/dark/apps/blog-create.css'])
     <!--  END CUSTOM STYLE FILE  -->
+
+    @notifyCss
 </head>
 
 <body class="layout-boxed alt-menu">
@@ -92,6 +94,9 @@
     @vite(['resources/rtl/src/plugins/src/tagify/tagify.min.js'])
     @vite(['resources/rtl/src/assets/js/apps/blog-create.js'])
     <!-- END PAGE LEVEL SCRIPTS -->
+
+    <x-notify::notify />
+    @notifyJs
 </body>
 
 </html>

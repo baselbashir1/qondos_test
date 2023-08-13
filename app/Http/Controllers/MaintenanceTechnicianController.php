@@ -31,6 +31,7 @@ class MaintenanceTechnicianController extends Controller
             'password' => bcrypt($formFields['password'])
         ]);
 
+        notify()->success('تمت إضافة فني صيانة بنجاح');
         return redirect()->route('maintenance-technicians.index');
     }
 
@@ -51,12 +52,14 @@ class MaintenanceTechnicianController extends Controller
             'password' => bcrypt($formFields['password'])
         ]);
 
+        notify()->success('تم تعديل فني الصيانة بنجاح');
         return redirect()->route('maintenance-technicians.index');
     }
 
     public function destroy(MaintenanceTechnician $maintenanceTechnician)
     {
         $maintenanceTechnician->delete();
+        notify()->success('تم حذف فني الصيانة بنجاح');
         return redirect()->route('maintenance-technicians.index');
     }
 }

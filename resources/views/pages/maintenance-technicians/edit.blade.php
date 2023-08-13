@@ -61,7 +61,8 @@
                         </div>
                         <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 mt-4">
                             <div class="col-sm-12">
-                                <button type="submit" class="btn btn-success w-100">تحديث</button>
+                                <button type="submit" class="btn btn-success w-100"><span
+                                        style="color: black">تحديث</span></button>
                             </div>
                         </div>
                     </div>

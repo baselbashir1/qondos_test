@@ -32,8 +32,7 @@ class ClientController extends Controller
             'password' => bcrypt($formFields['password'])
         ]);
 
-        notify()->success('Welcome to Laravel Notify ⚡️');
-        // Session::flash('toast_success', 'Client added successfully!');
+        notify()->success('تمت إضافة العميل بنجاح');
         return redirect()->route('clients.index');
     }
 
@@ -54,12 +53,14 @@ class ClientController extends Controller
             'password' => bcrypt($formFields['password'])
         ]);
 
+        notify()->success('تم تعديل العميل بنجاح');
         return redirect()->route('clients.index');
     }
 
     public function destroy(Client $client)
     {
         $client->delete();
+        notify()->success('تم حذف العميل بنجاح');
         return redirect()->route('clients.index');
     }
 }
