@@ -40,6 +40,31 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'client' => [
+            'driver' => 'session',
+            'provider' => 'clients',
+        ],
+
+        'maintenance-technician' => [
+            'driver' => 'session',
+            'provider' => 'maintenance_technicians',
+        ],
+
+        'api' => [
+            'driver' => 'passport',
+            'provider' => 'users',
+        ],
+
+        'api-client' => [
+            'driver' => 'passport',
+            'provider' => 'clients',
+        ],
+
+        'api-maintenance-technician' => [
+            'driver' => 'passport',
+            'provider' => 'maintenance_technicians',
+        ],
     ],
 
     /*
@@ -65,10 +90,15 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'clients' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Client::class,
+        ],
+
+        'maintenance_technicians' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\MaintenanceTechnician::class,
+        ],
     ],
 
     /*
